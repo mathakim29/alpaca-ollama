@@ -1,12 +1,59 @@
-# Ollama API rewrite
-- add some custom functions such as
+# Alpaca - Async Ollama API library with extras
 
+## Features
 
+- Async by default
+- Uses modern Python async code.
+- Utility functions like embedding similarity ranking.
+- Generate prompts and get responses from models 
+
+## Installation
+
+Install the package via pip:
+
+```bash
+pip install alpaca
+````
+
+## Usage
+
+Prompt generating example
 
 ```python
-def greet(name):
-    print(f"Hello, {name}!")
+import asyncio
+from alpaca import api
 
-greet("Alpaca")
+async def main():
+    prompt = "Explain the importance of clean code."
+    response = await api.prompt_gen(prompt)
+    print(response)
+
+asyncio.run(main())
 ```
-!['logo.png'](logo.png)
+
+Embedding similarity checking example: 
+
+```python
+import asyncio
+from alpaca import api
+
+async def main():
+    query = "What is the capital of France?"
+    sentences = [
+        "Paris is the capital of France.",
+        "Berlin is in Germany.",
+        "Madrid is in Spain."
+    ]
+    result = await api.sim_check(query, sentences)
+    print(result)
+
+asyncio.run(main())
+```
+
+For more detailed examples, see the [example.ipynb](./example.ipynb) notebook.
+
+## Contributing
+Contributions are welcome! Please open issues or submit pull requests.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

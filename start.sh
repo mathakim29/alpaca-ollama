@@ -6,6 +6,4 @@ else
 fi
     source .venv/bin/activate
     uv pip install -r requirement.txt
-
-    uvicorn server_files.index:app &
-    python main.py
+    jupyter lab

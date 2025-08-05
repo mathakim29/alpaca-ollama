@@ -1,8 +1,9 @@
+jupyter # for debug
+nest_asyncio # for jupyter 
+
 fastapi
 uvicorn
-jupyter
 httpx
 numpy
-pymupdf
-pywebview[qt]
 uvloop
+guidance
