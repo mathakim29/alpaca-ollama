@@ -1,3 +1,4 @@
+!['alpaca logo'](logo.png)
 # Alpaca - Async Ollama API Library with Extras
 
 ## Features
