@@ -1,2 +1,7 @@
-# ollama-api-revamp
-Custom Ollama API rewrite by me
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alpaca")
+```
+!['logo.png']("/logo.png")
