@@ -16,6 +16,10 @@ curl -fsSL https://ollama.com/install.sh | sh
 2. Clone the repository
 3. Put alpaca folder in same directory as your script
 
+## Default models:
+EMBED_MODEL = "snowflake-arctic-embed2:latest"
+PROMPT_MODEL = "granite3.3:2b"
+
 ## Usage
 
 Prompt generating example
@@ -51,7 +55,7 @@ async def main():
 asyncio.run(main())
 ```
 
-For more detailed examples, see the [examples.ipynb](./examples.ipynb) notebook.
+For more detailed examples and output, see the [examples.ipynb](./examples.ipynb) notebook.
 
 ## Contributing
 Contributions are welcome! Please open issues or submit pull requests.

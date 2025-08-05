@@ -130,42 +130,4 @@ async def prompt_gen(query: str, stream: bool = False, JSON_OUTPUT: bool = True)
                         return json.loads(line)
     return None
 
-# --------------------------------------
-# FastAPI App + Models
-# --------------------------------------
-app = FastAPI(title="Async Embedding & Prompt API")
 
-class SimilarityRequest(BaseModel):
-    query: str
-    sentences: List[str]
-
-class PromptRequest(BaseModel):
-    query: str
-    stream: bool = False
-
-@app.get("/embed")
-async def api_embed(query: str = Query(..., description="Text to embed")):
-    embedding = await embed_gen(query)
-    if embedding is None:
-        return {"error": "Failed to generate embedding."}
-    return {"embedding": embedding}
-
-@app.post("/similarity")
-async def api_sim_check(req: SimilarityRequest):
-    result = await sim_check(req.query, req.sentences)
-    return result
-
-@app.post("/prompt")
-async def api_prompt(req: PromptRequest):
-    result = await prompt_gen(req.query, stream=req.stream)
-    if result is None:
-        return {"error": "Prompt generation failed."}
-    return result
-
-# --------------------------------------
-# Run API Server CLI
-# --------------------------------------
-if __name__ == "__main__":
-    import uvicorn
-    print("Starting Async API server at http://localhost:8000")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
