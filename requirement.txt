@@ -3,3 +3,6 @@ uvicorn
 jupyter
 httpx
 numpy
+pymupdf
+pywebview[qt]
+uvloop

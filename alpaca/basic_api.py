@@ -2,11 +2,12 @@ import httpx
 import json
 import numpy as np
 from typing import List, Dict, Any
+import const
 
 EMBED_MODEL = "snowflake-arctic-embed2:latest"
 PROMPT_MODEL = "granite3.3:2b"
+TIMEOUT = 70
 
-TIMEOUT = httpx.Timeout(70.0)
 
 # embed generation
 def embed_gen(query: str):
@@ -19,7 +20,7 @@ def embed_gen(query: str):
             "POST",
             "http://localhost:11434/api/embed",
             json=payload,
-            timeout=TIMEOUT
+            timeout= httpx.Timeout(TIMEOUT)
         ) as response:
             for line in response.iter_lines():
                 if line:
