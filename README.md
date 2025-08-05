@@ -15,6 +15,11 @@ Here's the cleaned-up version of your `README.md` with **no emojis** and include
 curl -fsSL https://ollama.com/install.sh | sh
 ````
 
+2. Install dependencies
+```bash
+pip install httpx numpy pydantic
+```
+
 2. Clone this repository
 
 3. Place the `alpaca/` folder in the same directory as your Python script
@@ -82,11 +87,6 @@ print(response["content"])
 * Requires Ollama running at `http://localhost:11434`
 * All HTTP calls are streamed using `httpx.AsyncClient`
 
-## Dependencies
-
-```bash
-pip install fastapi httpx numpy pydantic
-```
 
 ## Contributing
 
