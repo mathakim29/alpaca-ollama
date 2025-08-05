@@ -8,8 +8,12 @@
 - Generate prompts and get responses from models 
 
 ## Installation
+1. Install ollama
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+````
 
-Install the package via pip:
+2. Install the package via pip:
 
 ```bash
 pip install alpaca
@@ -50,7 +54,7 @@ async def main():
 asyncio.run(main())
 ```
 
-For more detailed examples, see the [example.ipynb](./example.ipynb) notebook.
+For more detailed examples, see the [examples.ipynb](./examples.ipynb) notebook.
 
 ## Contributing
 Contributions are welcome! Please open issues or submit pull requests.
