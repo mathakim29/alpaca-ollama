@@ -1,28 +1,43 @@
-# Alpaca - Async Ollama API library with extras
+Here's the cleaned-up version of your `README.md` with **no emojis** and includes the ability to set default models:
+# Alpaca - Async Ollama API Library with Extras
 
 ## Features
 
-- Async by default
-- Uses modern Python async code.
-- Utility functions like embedding similarity ranking.
-- Generate prompts and get responses from models 
+- Fully async using `httpx` and `asyncio`
+- Embedding generation with similarity ranking
+- Prompt generation with optional streaming
+- Customizable default model configuration
 
 ## Installation
-1. Install ollama
+
+1. Install Ollama
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ````
 
-2. Clone the repository
-3. Put alpaca folder in same directory as your script
+2. Clone this repository
 
-## Default models:
+3. Place the `alpaca/` folder in the same directory as your Python script
+
+## Default Models
+
+```python
 EMBED_MODEL = "snowflake-arctic-embed2:latest"
 PROMPT_MODEL = "granite3.3:2b"
+```
+
+You can override the default models at runtime:
+
+```python
+from alpaca import api
+
+api.EMBED_MODEL = "your-custom-embed-model"
+api.PROMPT_MODEL = "your-custom-prompt-model"
+```
 
 ## Usage
 
-Prompt generating example
+### Prompt Generation
 
 ```python
 import asyncio
@@ -30,13 +45,13 @@ from alpaca import api
 
 async def main():
     prompt = "Explain the importance of clean code."
-    response = await api.prompt_gen(prompt)
-    print(response)
+    result = await api.prompt_gen(prompt)
+    print(result)
 
 asyncio.run(main())
 ```
 
-Embedding similarity checking example: 
+### Embedding Similarity
 
 ```python
 import asyncio
@@ -44,21 +59,40 @@ from alpaca import api
 
 async def main():
     query = "What is the capital of France?"
-    sentences = [
+    candidates = [
         "Paris is the capital of France.",
         "Berlin is in Germany.",
         "Madrid is in Spain."
     ]
-    result = await api.sim_check(query, sentences)
+    result = await api.sim_check(query, candidates)
     print(result)
 
 asyncio.run(main())
 ```
 
-For more detailed examples and output, see the [examples.ipynb](./examples.ipynb) notebook.
+### Streaming Prompts
+
+```python
+response = await api.prompt_gen("Tell me a story", stream=True)
+print(response["content"])
+```
+
+## Notes
+* For more detailed examples and output, see the [examples.ipynb](./examples.ipynb) notebook.
+* Requires Ollama running at `http://localhost:11434`
+* All HTTP calls are streamed using `httpx.AsyncClient`
+
+## Dependencies
+
+```bash
+pip install fastapi httpx numpy pydantic
+```
 
 ## Contributing
-Contributions are welcome! Please open issues or submit pull requests.
+
+Contributions are welcome. Please open issues or submit pull requests.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+MIT – see the [LICENSE](LICENSE) file for details.
+
