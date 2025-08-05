@@ -13,11 +13,8 @@
 curl -fsSL https://ollama.com/install.sh | sh
 ````
 
-2. Install the package via pip:
-
-```bash
-pip install alpaca
-````
+2. Clone the repository
+3. Put alpaca folder in same directory as your script
 
 ## Usage
 
