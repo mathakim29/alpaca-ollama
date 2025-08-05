@@ -1,4 +1,3 @@
-Here's the cleaned-up version of your `README.md` with **no emojis** and includes the ability to set default models:
 # Alpaca - Async Ollama API Library with Extras
 
 ## Features
